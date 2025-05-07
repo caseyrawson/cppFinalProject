@@ -1,4 +1,3 @@
-// main.cpp
 #include "timedSharedPtr.h"
 #include <iostream>
 #include <thread>
@@ -27,18 +26,18 @@ int main() {
     cout << "myNode.use_count(): " << myNode.use_count() << endl;
     cout << "myOtherNode.use_count(): " << myOtherNode.use_count() << endl;
 
-    // after 25 ms more (total 75 ms)
+    // after 75 ms
     this_thread::sleep_until(Clock::now() + milliSeconds(25));
     cout << "myNode.get() address: <" << myNode.get() << ">" << endl;
 
-    // after 75 ms more (total 150 ms)
+    // after 150 ms
     this_thread::sleep_until(Clock::now() + milliSeconds(75));
     cout << "The ptr should have expired: " << endl;
     cout << "myNode.get() address: <" << myNode.get() << ">" << endl;
 
     cout << "-----------" << endl;
 
-    // now test with an int and default timeout (1000 ms)
+    // now test with int and with default timeout (1000 ms)
     TimedSharedPtr<int> p(new int(42));
     cout << p.get() << endl;
     cout << "p.use_count(): " << p.use_count() << endl;

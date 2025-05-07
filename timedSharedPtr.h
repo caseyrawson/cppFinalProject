@@ -54,7 +54,7 @@ public:
     // default constructor
     TimedSharedPtr() : _PtrToControl(nullptr) {}
 
-    // primary construct
+    // primary constructor
     TimedSharedPtr(T* raw, long deleteMeInMilliseconds)
       : _PtrToControl(new ControlTimedSharedPtr(raw, deleteMeInMilliseconds))
     {}
@@ -64,7 +64,7 @@ public:
       : TimedSharedPtr(raw, 1000)
     {}
 
-    // copy construct
+    // copy constructor
     TimedSharedPtr(const TimedSharedPtr& other) noexcept
       : _PtrToControl(other._PtrToControl)
     {
